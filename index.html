@@ -61,6 +61,13 @@ Create your own style</textarea>
     </section>
     <footer>PARADOX FONT STUDIO <span>Создавай. Украшай. Копируй.</span></footer>
   </main>
-  <script src="app.js" charset="UTF-8"></script>
+  <script>
+window.addEventListener('error', function(e) {
+  const box = document.createElement('pre');
+  box.style.cssText = 'position:fixed;z-index:99999;top:10px;left:10px;right:10px;background:#500;color:white;padding:15px;white-space:pre-wrap;font-size:14px';
+  box.textContent = 'ОШИБКА JAVASCRIPT:\n' + e.message + '\nФайл: ' + e.filename + '\nСтрока: ' + e.lineno;
+  document.body.appendChild(box);
+});
+  </script><script src="app.js" charset="UTF-8"></script>
 </body>
 </html>
