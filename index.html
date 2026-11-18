@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101713">
+  <meta name="description" content="PARADOX FONT STUDIO — генератор декоративного Unicode-текста для Telegram.">
+  <title>PARADOX FONT STUDIO V3</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="PARADOX FONT STUDIO">
+      <span class="brand-mark">P</span>
+      <span>PARADOX <b>FONT STUDIO</b><small>TELEGRAM TEXT DESIGNER</small></span>
+    </a>
+    <span class="local-tag"><i></i> Сохранение на устройстве</span>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <div class="eyebrow">UNICODE TEXT GENERATOR</div>
+      <h1>Твой текст.<br><em>Твой стиль.</em></h1>
+      <p>Преобразуй обычный текст в необычные Unicode-символы, добавь украшения и скопируй готовый вариант в Telegram.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="panel editor-panel">
+        <div class="section-head">
+          <div><span class="step">01</span><h2>Твой текст</h2></div>
+          <button class="subtle" id="clearBtn" type="button">Очистить</button>
+        </div>
+        <textarea id="sourceText" maxlength="5000" placeholder="Напиши здесь что-нибудь красивое...">PARADOX
+Create your own style</textarea>
+        <div class="under-input"><span id="charCount">0 символов</span><span>До 5000 символов</span></div>
+
+        <div class="section-head compact">
+          <div><span class="step">02</span><h2>Выбери стиль</h2></div>
+          <span class="muted">Нажми на карточку</span>
+        </div>
+        <div class="style-grid" id="styleGrid"></div>
+
+        <section class="favorites-panel" aria-labelledby="favoritesTitle">
+          <div class="section-head compact">
+            <div><span class="step">★</span><h2 id="favoritesTitle">Избранное</h2></div>
+            <span class="muted">Сохраняй стили и композиции</span>
+          </div>
+          <div class="favorite-style-list" id="favoriteStyles"><span class="empty">Отметь звёздочкой понравившиеся стили</span></div>
+          <div class="favorite-actions">
+            <button class="save-favorite-btn" id="saveFavoriteBtn" type="button">＋ Сохранить текущую композицию</button>
+          </div>
+          <div class="favorite-compositions" id="favoriteCompositions"><span class="empty">Сохранённых композиций пока нет</span></div>
+        </section>
+
+        <div class="section-head compact deco-head">
+          <div><span class="step">03</span><h2>Украшения</h2></div>
+          <button class="subtle" id="clearDecor" type="button">Сбросить</button>
+        </div>
+        <div class="symbol-tools">
+          <input id="symbolSearch" type="search" placeholder="Поиск: звезда, сердце, ✦..." aria-label="Поиск украшений">
+          <div class="chips" id="symbolCategories"></div>
+        </div>
+        <div class="symbol-grid" id="symbolGrid"></div>
+        <div class="selected-symbols">
+          <span class="muted">Добавленные украшения · нажми на символ, чтобы добавить несколько</span>
+          <div id="selectedSymbols" class="selected-list"><span class="empty">Пока ничего нет</span></div>
+        </div>
+
+        <div class="section-head compact"><div><span class="step">04</span><h2>Композиция</h2></div></div>
+        <div class="composition">
+          <label>Расположение украшений
+            <select id="placement">
+              <option value="both">Перед и после текста</option>
+              <option value="top">Только перед текстом</option>
+              <option value="bottom">Только после текста</option>
+              <option value="sides">По бокам каждой строки</option>
+            </select>
+          </label>
+          <label>Разделитель строк
+            <select id="separator">
+              <option value="none">Без разделителя</option>
+              <option value="line">────────────</option>
+              <option value="dots">· · · · · · · · ·</option>
+              <option value="stars">✦ ─ ✦ ─ ✦</option>
+              <option value="wave">〜〜〜〜〜〜〜</option>
+            </select>
+          </label>
+          <label class="check-label"><input type="checkbox" id="centerText"> Центрировать текст пробелами</label>
+        </div>
+      </div>
+
+      <aside class="panel preview-panel">
+        <div class="section-head">
+          <div><span class="step">05</span><h2>Предпросмотр</h2></div>
+          <span class="live"><i></i> LIVE</span>
+        </div>
+        <div class="preview-wrap"><div id="preview" class="preview" aria-live="polite"></div></div>
+        <div class="preview-meta"><span>Результат для копирования</span><span id="outputCount">0 символов</span></div>
+        <button class="copy-btn" id="copyBtn" type="button"><span>Копировать текст</span><b>↗</b></button>
+        <div class="copy-status" id="copyStatus" role="status" aria-live="polite"></div>
+        <button class="download-btn" id="downloadBtn" type="button">Скачать .TXT</button>
+        <div class="divider"></div>
+        <h3>Где использовать</h3>
+        <div class="destination-list">
+          <button class="destination active" data-target="Имя профиля" type="button"><span>✦</span><span><b>Имя профиля</b><small>Короткий стильный ник</small></span></button>
+          <button class="destination" data-target="О себе / BIO" type="button"><span>☷</span><span><b>О себе / BIO</b><small>Описание профиля</small></span></button>
+          <button class="destination" data-target="Сообщение" type="button"><span>✉</span><span><b>Сообщение</b><small>Текст для чата</small></span></button>
+        </div>
+        <p class="hint" id="destinationHint">Для имени профиля лучше использовать короткий вариант. Telegram может ограничивать длину поля.</p>
+        <div class="note"><b>Важно</b><p>Это не установка настоящего шрифта. Здесь используются Unicode-символы, похожие на разные начертания. Кириллица сохраняется обычной, если для неё нет соответствующего Unicode-набора. Отображение зависит от устройства и приложения.</p></div>
+      </aside>
+    </section>
+    <footer>PARADOX FONT STUDIO <span>Создавай. Украшай. Копируй.</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
