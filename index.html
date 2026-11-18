@@ -2,64 +2,64 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111512">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101713">
   <title>PARADOX FONT STUDIO</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#"><span class="brand-mark">P</span><span>PARADOX <b>FONT STUDIO</b><small>CREATIVE TYPE WORKSPACE</small></span></a>
-    <div class="top-actions"><span class="save-state" id="saveState">● Локально</span><button class="ghost" id="newProject">Новый проект</button><button class="primary" id="exportPng">Экспорт PNG</button></div>
+    <a class="brand" href="#"><span class="brand-mark">P</span><span>PARADOX <b>FONT STUDIO</b><small>TELEGRAM TEXT DESIGNER</small></span></a>
+    <span class="local-tag"><i></i> Сохранение на устройстве</span>
   </header>
-  <main class="workspace">
-    <aside class="sidebar">
-      <div class="section-label">РАБОЧЕЕ ПРОСТРАНСТВО</div>
-      <button class="nav-item active" data-panel="design">▧ <span>Дизайн текста</span></button>
-      <button class="nav-item" data-panel="glyphs">▦ <span>Редактор символов</span></button>
-      <button class="nav-item" data-panel="library">✧ <span>Библиотека рисунков</span></button>
-      <div class="sidebar-bottom"><div class="section-label">ПРОЕКТ</div><div class="project-name" id="projectLabel">Без названия</div><p>Все изменения сохраняются в этом браузере автоматически.</p></div>
-    </aside>
-    <section class="main-area">
-      <div class="page-heading"><div><div class="eyebrow">TYPE DESIGN / WORKSPACE</div><h1 id="panelTitle">Дизайн текста</h1><p id="panelSubtitle">Создавайте выразительные надписи и экспериментируйте с типографикой.</p></div><div class="status-pill">LOCAL PROJECT</div></div>
-      <div class="panel" id="designPanel">
-        <div class="editor-grid">
-          <section class="controls card">
-            <div class="card-title">СОДЕРЖАНИЕ <span>01</span></div>
-            <label for="textInput">Текст надписи</label>
-            <textarea id="textInput" rows="3">PARADOX</textarea>
-            <div class="two-cols">
-              <div><label for="fontSelect">Шрифт</label><select id="fontSelect"><option value="Arial">Modern Sans</option><option value="Georgia">Editorial Serif</option><option value="Impact">Heavy Display</option><option value="Courier New">Mono Type</option><option value="Trebuchet MS">Geometric</option><option value="cursive">Signature</option></select></div>
-              <div><label for="weightSelect">Начертание</label><select id="weightSelect"><option value="700">Bold</option><option value="400">Regular</option><option value="900">Black</option><option value="300">Light</option></select></div>
-            </div>
-            <div class="control"><div class="label-line"><label for="sizeRange">Размер</label><output id="sizeOut">92 px</output></div><input id="sizeRange" type="range" min="24" max="180" value="92"></div>
-            <div class="control"><div class="label-line"><label for="spacingRange">Межбуквенный интервал</label><output id="spacingOut">4 px</output></div><input id="spacingRange" type="range" min="-4" max="24" value="4"></div>
-            <div class="two-cols">
-              <div><label for="textColor">Цвет текста</label><input id="textColor" type="color" value="#dce9df"></div>
-              <div><label for="bgColor">Фон холста</label><input id="bgColor" type="color" value="#171d19"></div>
-            </div>
-            <div class="control"><div class="label-line"><label for="outlineRange">Обводка</label><output id="outlineOut">0 px</output></div><input id="outlineRange" type="range" min="0" max="12" value="0"></div>
-            <div class="control"><div class="label-line"><label for="shadowRange">Тень</label><output id="shadowOut">18%</output></div><input id="shadowRange" type="range" min="0" max="80" value="18"></div>
-            <div class="button-row"><button class="secondary" id="resetDesign">Сбросить стиль</button><button class="secondary" id="addDecoration">Добавить рисунок</button></div>
-          </section>
-          <section class="preview-column">
-            <div class="canvas-card card">
-              <div class="canvas-toolbar"><span>ПРЕДПРОСМОТР</span><span>1200 × 600</span></div>
-              <canvas id="artboard" width="1200" height="600" aria-label="Предпросмотр надписи"></canvas>
-              <div class="canvas-footer"><span>Изменения отображаются сразу</span><button class="text-button" id="downloadSvg">Экспорт SVG ↗</button></div>
-            </div>
-            <div class="card decoration-card"><div class="card-title">ДОБАВЛЕННЫЕ РИСУНКИ <span id="decorationCount">0</span></div><div id="activeDecorations" class="active-decorations"><span class="muted">Пока нет рисунков. Выберите элемент из библиотеки.</span></div></div>
-          </section>
+  <main class="shell">
+    <section class="intro">
+      <div class="eyebrow">UNICODE TEXT GENERATOR</div>
+      <h1>Твой текст.<br><em>Твой стиль.</em></h1>
+      <p>Преобразуй обычный текст в необычные Unicode-символы, добавь украшения и скопируй готовый вариант в Telegram.</p>
+    </section>
+    <section class="workspace">
+      <div class="panel editor-panel">
+        <div class="section-head"><div><span class="step">01</span><h2>Твой текст</h2></div><button class="subtle" id="clearBtn">Очистить</button></div>
+        <textarea id="sourceText" maxlength="5000" placeholder="Напиши здесь что-нибудь красивое...">PARADOX
+Create your own style</textarea>
+        <div class="under-input"><span id="charCount">0 символов</span><span>До 5000 символов</span></div>
+        <div class="section-head compact"><div><span class="step">02</span><h2>Выбери стиль</h2></div><span class="muted">Нажми на карточку</span></div>
+        <div class="style-grid" id="styleGrid"></div>
+        <div class="section-head compact deco-head"><div><span class="step">03</span><h2>Украшения</h2></div><button class="subtle" id="clearDecor">Сбросить</button></div>
+        <div class="symbol-tools"><input id="symbolSearch" type="search" placeholder="Поиск символа..."><div class="chips" id="symbolCategories"></div></div>
+        <div class="symbol-grid" id="symbolGrid"></div>
+        <div class="selected-symbols"><span class="muted">Добавленные украшения</span><div id="selectedSymbols" class="selected-list"><span class="empty">Пока ничего нет</span></div></div>
+        <div class="section-head compact"><div><span class="step">04</span><h2>Композиция</h2></div></div>
+        <div class="composition">
+          <label>Расположение украшений
+            <select id="placement"><option value="both">Сверху и снизу</option><option value="top">Только сверху</option><option value="bottom">Только снизу</option><option value="sides">По бокам</option></select>
+          </label>
+          <label>Разделитель строк
+            <select id="separator"><option value="none">Без разделителя</option><option value="line">────────────</option><option value="dots">· · · · · · · · ·</option><option value="stars">✦ ─ ✦ ─ ✦</option><option value="wave">〜〜〜〜〜〜〜</option></select>
+          </label>
+          <label class="check-label"><input type="checkbox" id="centerText"> Центрировать текст пробелами</label>
         </div>
       </div>
-      <div class="panel hidden" id="glyphsPanel">
-        <div class="card glyph-card"><div class="card-title">РЕДАКТОР СИМВОЛОВ <span>02</span></div><p class="muted">Выберите символ, чтобы настроить его вид в текущем макете. Для точной установки рисунка используйте библиотеку.</p><div class="glyph-grid" id="glyphGrid"></div><div class="glyph-edit"><div><label>Выбранный символ</label><strong id="selectedGlyph">P</strong></div><div><label for="glyphScale">Масштаб символа</label><input id="glyphScale" type="range" min="50" max="160" value="100"></div><div><label for="glyphRotate">Поворот</label><input id="glyphRotate" type="range" min="-30" max="30" value="0"></div><button class="secondary" id="applyGlyph">Применить к надписи</button></div></div>
-      </div>
-      <div class="panel hidden" id="libraryPanel">
-        <div class="card library-card"><div class="card-title">БИБЛИОТЕКА РИСУНКОВ <span>03</span></div><p class="muted">Добавляйте декоративные элементы в композицию. Нажмите на рисунок, чтобы поместить его на холст.</p><div class="library-tabs"><button class="filter active" data-filter="all">Все</button><button class="filter" data-filter="symbols">Символы</button><button class="filter" data-filter="nature">Природа</button><button class="filter" data-filter="ornament">Орнаменты</button><button class="filter" data-filter="tech">Геометрия</button></div><div class="library-grid" id="libraryGrid"></div></div>
-      </div>
-      <footer>PARADOX FONT STUDIO <span>DESIGN LOCALLY · CREATE FREELY</span></footer>
+      <aside class="panel preview-panel">
+        <div class="section-head"><div><span class="step">05</span><h2>Предпросмотр</h2></div><span class="live"><i></i> LIVE</span></div>
+        <div class="preview-wrap"><div id="preview" class="preview" aria-live="polite"></div></div>
+        <div class="preview-meta"><span>Результат для копирования</span><span id="outputCount">0 символов</span></div>
+        <button class="copy-btn" id="copyBtn"><span>Копировать текст</span><b>↗</b></button>
+        <div class="copy-status" id="copyStatus" role="status"></div>
+        <button class="download-btn" id="downloadBtn">Скачать .TXT</button>
+        <div class="divider"></div>
+        <h3>Где использовать</h3>
+        <div class="destination-list">
+          <button class="destination active" data-target="Имя профиля"><span>✦</span><span><b>Имя профиля</b><small>Короткий стильный ник</small></span></button>
+          <button class="destination" data-target="О себе / BIO"><span>☷</span><span><b>О себе / BIO</b><small>Описание профиля</small></span></button>
+          <button class="destination" data-target="Сообщение"><span>✉</span><span><b>Сообщение</b><small>Текст для чата</small></span></button>
+        </div>
+        <p class="hint" id="destinationHint">Для имени профиля лучше использовать короткий вариант. Telegram может ограничивать длину поля.</p>
+        <div class="note"><b>Важно</b><p>Это не установка настоящего шрифта. Здесь используются Unicode-символы, похожие на разные начертания. Некоторые символы могут отображаться по-разному на разных устройствах и не поддерживают все языки.</p></div>
+      </aside>
     </section>
+    <footer>PARADOX FONT STUDIO <span>Создавай. Украшай. Копируй.</span></footer>
   </main>
   <script src="app.js"></script>
 </body>
